@@ -1,0 +1,29 @@
+<marquee direction="scroll">
+    <img src="https://media1.tenor.com/images/abb9bb0bb79865bfc4ac963d4c30eb7a/tenor.gif?itemid=11191352" height="75" width="75">
+</marquee>
+
+@model Sport
+
+<h2>Hobbies</h2>
+<br>
+<a href="dashboard"  class="btn btn-success">Home</a>
+<a href="logout" class="btn btn-danger">Log out</a>
+<br><br>
+
+<h3>Create a New Hobby</h3>
+
+<br>
+
+<form asp-action="AddSport" asp-controller="Home" method="POST">
+
+        <label asp-for="Title"></label>
+        <span asp-validation-for="Title"></span>
+        <input type="text" asp-for="Title">
+            <br><br>
+        <label asp-for="Description"></label>
+        <span asp-validation-for="Description"></span>
+        <input type="text" asp-for="Description">
+            <br><br>
+    <input type="submit" class="btn btn-success" value="Create Activity">
+
+</form>

@@ -1,0 +1,31 @@
+<marquee direction="scroll">
+    <img src="https://media1.tenor.com/images/abb9bb0bb79865bfc4ac963d4c30eb7a/tenor.gif?itemid=11191352" height="75" width="75">
+</marquee>
+
+@model List<Sport>
+
+    <h1 style="text-align: center">Hobbies</h1>
+    <h3>Welcome, @ViewBag.CurrUserName !</h3>     
+    <br>
+    <a href="/logout" class="btn btn-danger">Log out</a>
+    <br>
+    <br>
+
+<table class="table table-striped">
+    <tr>
+        <th><h4>Name</h4></th>
+        <th><h4>Enthusiats</h4></th>
+        <th><h4>Created By</h4></th>
+    </tr>
+    @foreach(var Sport in Model){
+    <tr>
+        <td><h6><a asp-action="ShowSport" asp-controller="Home"
+            asp-route-SportId="@Sport.SportId">
+            @Sport.Title</a></h6></td>
+        <td><h6>@Sport.Guests.Count</h6></td>
+        <td><h6>@Sport.CreatorName</h6></td>
+    </tr>
+    }
+</table>
+
+<a href="NewHobby"><button class="btn btn-success">Create a new Hobby</button></a>

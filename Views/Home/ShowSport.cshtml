@@ -1,0 +1,46 @@
+<marquee direction="scroll">
+    <img src="https://media1.tenor.com/images/abb9bb0bb79865bfc4ac963d4c30eb7a/tenor.gif?itemid=11191352" height="75" width="75">
+</marquee>
+
+@model Sport
+
+<a href="/dashboard" class="btn btn-success">Home</a>
+<a href="/logout" class="btn btn-danger">Log out</a>
+
+<br>
+    <h1 style="text-align: center">@ViewBag.OneSport.Title</h1>
+
+
+<div class="card">
+    <div class="card-header">
+        <h2>Description:</h2>
+    </div>
+    <div class="card-body">
+        <p class="card-text">@ViewBag.OneSport.Description.</p>
+    </div>
+</div>
+    <br>
+<div class="card">
+    <div class="card-header">
+        <h3>@ViewBag.OneSport.Title Enthusiasts:</h3>
+    </div>
+    <div class="card-body">
+        <p class="card-text"> 
+            @foreach(var i in @ViewBag.OneSport.Guests){
+        <p>@i.User.Name</p>
+    }
+    </div>
+</div>
+<br>
+@if(Model.CreatorId == @ViewBag.CurrUserId){
+    <a href="/delete/@ViewBag.OneSport.SportId"><button class="btn btn-danger">Delete </button></a>
+}
+else{
+    @if(Model.Guests.All(u=>u.UserId != @ViewBag.CurrUserId)){
+    <a href="/join/@ViewBag.OneSport.SportId"><button class="btn btn-success">Join</button></a>
+    }
+    else{
+    <a href="/leave/@ViewBag.OneSport.SportId"><button class="btn btn-danger">Leave</button></a>
+    }
+}
+
